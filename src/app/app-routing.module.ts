@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { HeroComponent } from './hero/hero.component';
 import { HerocountComponent } from './herocount/herocount.component';
+import { HeroFormComponent } from './hero-form/hero-form.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationFormComponent },
   { path: 'hero', component: HeroComponent },
+  { path: 'heroform', component: HeroFormComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 

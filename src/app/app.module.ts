@@ -11,6 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { HeroComponent } from './hero/hero.component';
 import { HerocountComponent } from './herocount/herocount.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HeroFormComponent } from './hero-form/hero-form.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,14 @@ import { HerocountComponent } from './herocount/herocount.component';
     LoginComponent,
     RegistrationFormComponent,
     HeroComponent,
-    HerocountComponent
+    HerocountComponent,
+    HeroFormComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

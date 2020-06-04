@@ -1,34 +1,102 @@
 <body>
-    <div class="signup-form">
-        <form action="/examples/actions/confirmation.php" method="post">
-            <h2>Register</h2>
-            <p class="hint-text">Create your account. It's free and only takes a minute.</p>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-xs-6 col-md-6"><input type="text" class="form-control" name="first_name"
-                            placeholder="First Name" required="required"></div>
-                    <div class="col-xs-6 col-md-6"><input type="text" class="form-control" name="last_name"
-                            placeholder="Last Name" required="required"></div>
+    <form method="post" [formGroup]="form" (ngSubmit)="onSubmit()" class="my-4">
+        <h2>Register</h2>
+        <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+
+        <div class="form-group">
+            <div class="row mb-0">
+                <div class="col-md-6">
+                    <input formControlName="firstName" type="text" class="form-control" name="firstName"
+                        placeholder="First Name">
+
+                </div>
+
+
+                <div class="col-md-6">
+                    <input formControlName="lastName" type="text" class="form-control" name="lastName"
+                        placeholder="Last Name">
                 </div>
             </div>
-            <div class="form-group">
-                <input type="email" class="form-control" name="email" placeholder="Email" required="required">
+        </div>
+
+        <div *ngIf="firstName.touched && !firstName.valid" class=" mt-0 alert alert-danger p-1">
+            <div *ngIf="firstName.errors.required">First Name is required</div>
+            <div *ngIf="firstName.errors.minlength">First Name should be minimum 3 characters long</div>
+        </div>
+
+        <div *ngIf="(lastName.touched && !lastName.valid)" class=" mt-0 alert alert-danger">
+            <div *ngIf=" lastName.errors.required">Last Name is required</div>
+            <div *ngIf="lastName.errors.minlength">Last Name should be minimum 3 characters long</div>
+        </div>
+
+
+        <div class="form-group">
+            <input type="email" formControlName="email" class="form-control" name="email" placeholder="Email"
+                required="required">
+            <div *ngIf="email.touched && !email.valid" class="alert alert-danger">
+                <div *ngIf="email.errors.required">Email is required</div>
             </div>
-            <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+
+        </div>
+
+        <div class="form-group">
+            <input type="text" formControlName="password" class="form-control" name="password" placeholder="Password"
+                required="required">
+            <div *ngIf="password.touched && !password.valid" class="alert alert-danger">
+                <div *ngIf="password.errors.required">Password is required</div>
+                <div *ngIf="password.errors.minlength">Password should be minimum 7 characters long</div>
             </div>
-            <div class="form-group">
-                <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password"
-                    required="required">
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" name="confirmPassword" placeholder="Confirm Password"
+                required="required">
+        </div>
+
+        <div class="row">
+            <div class="col-md-7"> Gender:
+                <label for="male" class="radio-inline mr-1">
+                    <input ngModel class="mr-1" type="radio" id="male" name="gender" value=1>
+                    Male
+                </label>
+
+                <label for="female" class="radio-inline mr-1">
+                    <input ngModel class="mr-1" type="radio" id="female" name="gender" value=2>
+                    Female
+                </label></div>
+
+            <div class="col-md-3">
+                <div class="dropdown mb-2" style="text-align: left">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select
+                            Country
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">India</a></li>
+                            <li><a href="#">USA</a></li>
+                            <li><a href="#">Australia</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a
-                        href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
-            </div>
-        </form>
-        <div class="text-center">Already have an account? <a href="#">Sign in</a></div>
-    </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="form-group">
+            <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of
+                    Use</a> &amp; <a href="#">Privacy Policy</a></label>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success btn-block">Register Now</button>
+        </div>
+
+    </form>
+
+    <div class="text-center my-10">Already have an account? <a routerLink="/login">Sign in</a></div>
 </body>

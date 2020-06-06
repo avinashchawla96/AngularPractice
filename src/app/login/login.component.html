@@ -6,16 +6,22 @@
 
 
         <div class="alert alert-danger" *ngIf="username.touched && !username.valid">
-            <div *ngIf="username.errors.required">First Name is Required</div>
-            <div *ngIf="username.errors.minlength">First Name should be minimum 3 characters </div>
-            <div *ngIf="username.errors.maxlength">First Name should be maximum 10 characters</div>
+            <div *ngIf="username.errors.required">username is Required</div>
+            <div *ngIf="username.errors.minlength">username should be minimum 3 characters </div>
+            <div *ngIf="username.errors.maxlength">username should be maximum 10 characters</div>
         </div>
     </div>
 
 
     <div class="form-group">
         <label for="password">Password</label>
-        <input ngModel #password="ngModel" name="password" id="password" type="text" class="form-control">
+        <input ngModel #password="ngModel" required minlength="8" maxlength="20" name="password" id="password"
+            type="text" class="form-control">
+        <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.minlength">Minimum 8 characters is required for password</div>
+            <div *ngIf="password.errors.maxlength">Maximum 20 characters are allowed</div>
+        </div>
     </div>
-    <button class="btn btn-primary" type="submit">Sign In</button>
+    <button class="btn btn-primary" type="submit">Login</button>
 </form>

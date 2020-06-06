@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   log(ngModelObj) {
-    console.log(ngModelObj);
+    // console.log(ngModelObj);
   }
 
 }
